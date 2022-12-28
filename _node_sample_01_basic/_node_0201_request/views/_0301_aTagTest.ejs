@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--
+            데이터를 전달하는 방식은 form 말고도 a태그로도 보낼수있다. 
+            직접 url에 내용을 적으면된다.
+   
+
+            [1] a태그의 href 속성에 다음페이지 주소를 적을때 가장뒤에 '?' 와 '변수=값' 이런형식으로 데이터를 보낼수있다. 
+            [2] 보내는 데이터가 여러개인경우는 처음에는 '?' 이고 그이후 추가되는 데이터는 '&' 를 붙이고 '변수=값' 이런형태로 전달한다. 
+    -->
+
+    <% 
+        var x = 10;
+        var y = 20;
+        var z = 30;     
+    %> 
+
+    <a href="aTagTest1Pro?x=<%=x%>">다음페이지1</a> <br><br>
+    <a href="aTagTest2Pro?x=<%=x%>&y=<%=y%>&z=<%=z%>">다음페이지2</a> <br><br>
+
+    <!--
+        버튼 태그는 버튼태그로 a태그를 감싸면 된다. 
+
+    -->
+    <hr>
+    <button><a href="aTagTest1Pro?x=<%=x%>">다음페이지1</a></button> <br><br>
+    <button><a href="aTagTest2Pro?x=<%=x%>&y=<%=y%>&z=<%=z%>">다음페이지2</a></button> <br><br>
+
+
+    <!--
+        버튼 태그는 a를 사용하지않고도 사용할수있는데 그럴대는 
+        onclick 함수를 사용한다. a 태그와는 사용법이 조금다른데, 
+        "location.href='주소'"  을사용해서 '' 안에 다음페이지 주소를 저장한다. 
+        사용할때 "" 쌍따옴표와 '' 홑따옴표를 둘다 사용해야되서 조심히 사용한다. 
+
+    -->
+    <hr>
+    <button onclick="location.href='aTagTest1Pro?x=<%=x%>'">다음페이지1</button> <br><br>
+    <button onclick="location.href='aTagTest2Pro?x=<%=x%>&y=<%=y%>&z=<%=z%>'">다음페이지2</button> <br><br>
+
+</body>
+</html>

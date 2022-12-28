@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--
+        [input radio] 
+
+        [1] 라디오버튼은 name속성의 값을 통일시켜 그룹을 형성한다.
+            여기서는 'grade' 로 통일시켰으며 name속성의 값이 다르면 적용 안된다. 
+
+        [2] checked 속성은 미리 한곳에 클릭해놓는 기능이다. (안써도 상관없다.) 
+    -->
+        학년
+        <form action="radioTestPro">
+            <input type="radio" name="grade" value="1" checked>1학년&nbsp;
+            <input type="radio" name="grade" value="2">2학년&nbsp;
+            <input type="radio" name="grade" value="3">3학년&nbsp;
+            <input type="radio" name="grade" value="4">4학년
+            <input type="submit" value="전송">
+        </form>
+</body>
+</html>

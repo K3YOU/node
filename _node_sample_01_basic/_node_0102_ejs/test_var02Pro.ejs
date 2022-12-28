@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        [문제]
+        철수와 영희는 50,000원 을 가지고있다. 
+        철수와 영희는 같이 영화 1편을 봤다.
+        간식은 팝콘1개와 콜라 2개를 사먹었다.
+        남은돈은 얼마인가?
+       
+        . 콜라1개는 팝콘1개 보다 4,000원 싸다.
+        . 영화 1편의 가격은 12,000 원이다.
+        . 팝콘의 가격은 영화의 0.6 가격이다.		
+   [정답]
+       12,400원
+        
+       var money = 50000;
+
+       var moviePrice = 12000;
+       var popcornPrice = moviePrice * 0.6;
+       var cockPrice = popcornPrice - 4000;
+       
+       var total = moviePrice * 2 + popcornPrice + cockPrice * 2;
+       
+       money -= total;
+    </pre>
+
+    <% 
+        var money = 50000;
+
+        var moviePrice = 12000;
+        var popcornPrice = moviePrice * 0.6;
+        var cockPrice = popcornPrice - 4000;
+        
+        var total = moviePrice * 2 + popcornPrice + cockPrice * 2;
+        
+        money -= total;
+    %> 
+
+    <h2>잔돈 = <%= money %>원</h2>
+
+    <a href="main">돌아가기</a>
+</body>
+</html>

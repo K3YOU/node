@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+            [ 야바위 게임 ]
+            버튼 3개중 한개는 당첨이고 두개는 꽝이다 당첨을 선택하시오.
+    -->
+
+    <% 
+        var ran = Math.floor(Math.random() * 3 + 1)
+    %> 
+    <h1>야바위 게임</h1>
+    <h3> 버튼 3개중 한개는 당첨이고 두개는 꽝이다 당첨을 선택하시오.</h3>
+    <a href="quizSelectPro?select=1&ran=<%=ran%>">1번선택</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <a href="quizSelectPro?select=2&ran=<%=ran%>">2번선택</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <a href="quizSelectPro?select=3&ran=<%=ran%>">3번선택</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+</body>
+</html>

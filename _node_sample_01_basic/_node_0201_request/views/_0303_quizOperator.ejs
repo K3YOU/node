@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*  text-decoration: none;  ==> a태그의 밑줄 을 없애준다. */
+        a {
+            text-decoration: none; 
+        }
+
+    </style>
+</head>
+<body>
+    <!--
+        [연산자게임]
+            [1]  (4~9) 사이의 랜덤숫자 두개와 그숫자 로연산한 답이 제시된다. (예시) 3 ? 4 = 12
+            [2]  ? 에들어갈 연산자를 고르면된다. 
+
+    -->
+    <%
+        var num1 = Math.floor(Math.random() * 6 + 4)
+        var num2 = Math.floor(Math.random() * 6 + 4)
+
+        var op = Math.floor(Math.random() * 3 + 1)
+
+        var result = 0;
+
+        if (op == 1){
+            result = num1 + num2;
+        }else if(op == 2){
+            result = num1 - num2;
+        }else {
+            result = num1 * num2;
+        }
+    %>
+    <h2>
+    <%=num1%> ? <%=num2%> = <%=result %> 
+    </h2>
+    <button><a href="quizOperatorPro?select=1&num1=<%=num1%>&num2=<%=num2%>&op=<%=op%>&result=<%=result%>">+</a></button>
+    <button><a href="quizOperatorPro?select=2&num1=<%=num1%>&num2=<%=num2%>&op=<%=op%>&result=<%=result%>">-</a></button>
+    <button><a href="quizOperatorPro?select=3&num1=<%=num1%>&num2=<%=num2%>&op=<%=op%>&result=<%=result%>">x</a></button>
+
+</body>
+</html>

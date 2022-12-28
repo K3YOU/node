@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원목록</title>
+<style>
+	a {
+		color: blueviolet;
+	}
+
+</style>
+</head>
+<body>
+    <%- include('../top.ejs') %>
+    <%- include('../nav.ejs') %>
+	
+	<div align="center">
+        <br><br>
+		<h2>회원목록</h2>
+        <br><br>
+
+		<table>
+			<tr align="center">
+				<td colspan="5" width="265px">
+					<form action="memberListSort">
+						<select name="sortStandard" style="width: 200px;">
+							<option value="sortNo">번호</option>
+							<option value="sortId">아이디</option>
+							<option value="sortName">이름</option>
+							<option value="sortEmail">이메일</option>
+						</select>
+						<input type="submit" value="정렬하기">
+					</form>
+				</td>
+			</tr>
+		</table>
+		<br>
+
+        <table border="1">
+			<tr align="center">	
+				<td width="100px">번호</td>
+				<td width="100px">아이디</td>
+				<td width="100px">이름</td>
+                <td width="100px">이메일</td>
+                <td width="50px">수정</td>
+                <td width="50px">삭제</td>
+			</tr>		
+		<%			
+			for(var i=0; i<memberDB.length; i++){
+				var member = memberDB[i];		
+				var memberNo = member["memberNo"];
+		%>
+			<tr align="left">
+				<td align="center">
+                    <a href="memberPage?memberNo=<%=memberNo%>"><%= member["memberNo"] %></a>
+                </td>
+                <td><%= member["memberId"] %></td>
+				<td><%= member["memberName"] %></td>
+				<td ><%= member["memberEmail"] %></td>
+                <td>			
+                    <button style="width: 100%;" onclick="location.href='memberUpdateForm?memberNo=<%=memberNo%>'">수정</button>
+                </td>
+                <td>
+                    <button style="width: 100%;" onclick="location.href='memberDeleteForm?memberNo=<%=memberNo%>'">삭제</button>
+                </td>
+			</tr>
+		<%		
+			}
+		%>
+		</table>		
+	</div>
+	<%- include('../footer.ejs') %>
+</body>
+</html>

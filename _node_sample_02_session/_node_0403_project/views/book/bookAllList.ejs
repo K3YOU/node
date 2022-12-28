@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT BOOK</title>
+    <link rel="shortcut icon" href="favi.ico">
+</head>
+<body>
+    <%- include("../header.ejs") %>
+    <%- include("../nav.ejs") %>
+    <div align="center">
+        <br><br>
+        <font size="5" color="#3a3a3a"><b>전체 도서</b></font>
+        <hr width="300px" color="#196ab3">
+        <br><br>
+
+        <table>
+        <% 
+            for(var i=0; i<bookDB.length; i++) { 
+                var book = bookDB[i];
+
+                if(i % 4 == 0) {
+        %>
+                <tr align="center" height="250px">
+        <%      } %> 
+                    <td width="400px">
+                        <a href="bookInfo?bookNo=<%= book['bookNo'] %>">
+                            <% if(book["bookStock"] > 0) { %>
+                                <img alt="상품" src="<%= book['bookImage'] %>" width="200px" height="300px" border="1px">
+                            <% } else { %>
+                                <img alt="상품" src="<%= book['bookImage'] %>" width="200px" height="300px" border="1px" style="opacity:20%">
+                            <% } %> 
+                        </a>
+                        <p><font size="3"><b><%= book["bookName"] %></b></font></p>
+                        <% if(book["bookStock"] > 0) { %>
+                            <% 
+                                if(book["bookDiscount"] > 0) { 
+                                    var discountPrice = book["bookPrice"] * (100 - book["bookDiscount"]) / 100;
+                            %>
+                                <p>
+                                    <font size="3" style="text-decoration: line-through;"><%= book["bookPrice"] %>원</font>
+                                    →
+                                    <font size="3" color="#196ab3"><b><%= discountPrice %>원</b></font>
+                                </p>
+                            <% } %>
+                        <% } else { %>
+                                <font size="2" color="red"><b>품절</b></font>
+                        <% } %>
+                        <p><font size="2"><%= book["bookInfo"] %></font></p>
+                        <br><br>
+                    </td>
+        <%      if(i % 4 == 3) { %> 
+                </tr>
+        <%      } %>
+        <% } %>        
+        </table>
+    </div>
+    <%- include("../footer.ejs") %>
+</div>
+</body>
+</html>

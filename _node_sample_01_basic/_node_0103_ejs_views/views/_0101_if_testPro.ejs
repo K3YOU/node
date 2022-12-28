@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre>
+        [문제]
+            철수는 시험에서 17점을 받았다. 합격인가 불합격인지 구하시오.
+
+        [합격조건] 
+            60점이상
+        
+            var score = 17;
+            var msg = ""
+            if(score >= 60) {
+                msg = "합격"
+            }else{
+                msg = "불합격"
+            }
+    </pre>
+
+        <%
+	        var score = 17;
+            var msg = ""
+            if(score >= 60) {
+                msg = "합격"
+            }else{
+                msg = "불합격"
+            }
+        %>
+
+        <h2><%=msg%></h2>
+        <h2><%=score%></h2>
+        <a href="main">돌아가기</a>
+
+</body>
+</html>

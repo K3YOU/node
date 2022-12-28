@@ -1,0 +1,41 @@
+<style>
+    a {
+        color: #3a3a3a;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #196ab3;
+    }
+    .top {
+        font-size: 13px;
+    }
+</style>
+
+<br><br>
+<div align="center">
+    <a href="mainBook">
+        <img alt="메인로고" src="logo.png" height="90px">
+    </a>
+</div>
+
+<div class="top" align="right">
+    <!-- 로그아웃 상태-->
+    <% if(log == null) { %>
+        <a href="memberJoin">회원가입</a> &nbsp;
+        <img alt="메뉴선" src="01_top.jpg">  &nbsp;
+        <a href="memberLogin">로그인</a> &nbsp;
+    <!-- 로그인 상태-->
+    <% } else { %>
+        <b><%= name %></b>님&nbsp;
+        <img alt="메뉴선" src="01_top.jpg">  &nbsp;
+        <a href="memberLogout">로그아웃</a> &nbsp;
+        <img alt="메뉴선" src="01_top.jpg">  &nbsp;
+        <a href="memberDelete">회원탈퇴</a> &nbsp;
+        <img alt="메뉴선" src="01_top.jpg">  &nbsp;
+        <a href="cartInfo">장바구니</a> &nbsp;
+        <img alt="메뉴선" src="01_top.jpg">  &nbsp;
+        <a href="orderList">주문내역</a> &nbsp;
+    <% } %>
+    <img alt="메뉴선" src="01_top.jpg">  &nbsp;
+    <a href="boardList">고객센터</a> &nbsp;
+</div>

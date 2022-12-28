@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+    <%
+        x = parseInt(x);  
+        y = parseInt(y);
+        z = parseInt(z);
+        
+        gameCount = parseInt(gameCount);   
+        scoreCount = parseInt(scoreCount);
+    
+        var state = "";
+        if(gameCount == 5) {
+            
+            state = "종료";
+
+        }else if(x * y == z){
+
+            scoreCount += 20;
+            state = "정답";
+
+        }else if(x * y != z){
+
+            state = "오답";
+        }
+
+    %>
+
+    <h2>[<%= gameCount %>]번째 게임 : [<%= scoreCount %>]점</h2>
+
+    <%
+        if(state == "정답") {
+    %>
+            <h1>정답</h1>
+            <a href="game99Play?gameCount=<%= gameCount + 1 %>&scoreCount=<%= scoreCount %>">뒤로가기</a>
+    <%
+        } else if(state == "오답") {
+    %>
+            <h1>오답</h1>
+            <a href="game99Play?gameCount=<%= gameCount + 1 %>&scoreCount=<%= scoreCount %>">뒤로가기</a>
+    <%
+        } else if(state == "종료") {
+    %>
+            <h1>종료</h1>
+            <a href="game99Main">처음으로</a>
+    <%
+        }
+    %>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT BOOK</title>
+    <link rel="shortcut icon" href="favi.ico">
+</head>
+<body>
+    <%- include("../header.ejs") %>
+    <%- include("../nav.ejs") %>
+    <div align="center">
+        <br><br>
+        <h2>주문 내역 확인</h2>
+        <hr width="300px" color="#196ab3">
+        <br><br>
+
+        <% if(count == 0) { %>
+            <h2>주문 내역이 비었습니다.</h2>
+        <% } else { %>
+
+        <table>
+            <tr height="50">
+                <td width="50" align="center">
+                    <font size="3" color="#196ab3">번호</font>
+                </td>
+                <td width="50" align="center">
+                    <font size="3" color="#196ab3">이미지</font>
+                </td>
+                <td width="100" align="center">
+                    <font size="3" color="#196ab3">상품명</font>
+                </td>
+                <td width="50" align="center">
+                    <font size="3" color="#196ab3">수량</font>
+                </td>
+                <td width="100" align="center">
+                    <font size="3" color="#196ab3">가격</font>
+                </td>
+            </tr>
+            
+            <tr height="10">
+                <td colspan="7">
+                    <hr size="2" color="gray" width="800">
+                </td>
+            </tr>
+            
+            <%
+                var index = 0;
+                for(var i = 0; i <orderDB.length; i++){
+                    if(orderDB[i]["orderMemberId"] == log) {
+                        index += 1;
+            %>
+            <tr height="50">
+                <td width="50" align="center">
+                    <font size="2"><%= index %></font>
+                </td>
+                <td width="50" align="center">
+                    <img src="<%= orderDB[i]['orderBookImage'] %>" height="50" style="border: 1px solid black;">
+                </td>
+                <td width="100" align="center">
+                    <font size="2"><%= orderDB[i]['orderBookName'] %></font>
+                </td>
+                <td width="50" align="center">
+                    <font size="2"><%= orderDB[i]['orderBuyCount'] %></font>
+                </td>
+                <td width="100" align="center">
+                    <font size="2" ><%= orderDB[i]['orderBuyCount'] * orderDB[i]['orderBuyBookPrice'] %></font>
+                </td>
+            </tr>
+            <%
+                 }
+            }
+            %>
+        </table>
+        <% } %>
+        <br><br><br><br><br><br>
+
+    </div>
+    <%- include("../footer.ejs") %>
+</div>
+</body>
+</html>

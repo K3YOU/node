@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원정보수정</title>
+</head>
+<body>
+    <%- include('../top.ejs') %>
+    <%- include('../nav.ejs') %>
+
+	<div align="center">
+		<br><br>
+		<h2>회원정보수정</h2>
+		<br><br>	
+	    <form  action="memberUpdatePro">
+	    	<table border="1">
+                <tr>
+                    <td>번호</td>
+                    <td><input type="text" name="memberNo" readonly value="<%=memberDB[0]["memberNo"]%>"></td>
+                </tr>
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text" name="memberId" value="<%=memberDB[0]["memberId"]%>"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="text" name="memberPw" value="<%=memberDB[0]["memberPw"]%>"></td>
+            </tr>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" name="memberName" value="<%=memberDB[0]["memberName"]%>"></td>
+                </tr>
+                <tr>
+                    <td> 이메일</td>
+                    <td><input type="text" name="memberEmail" value="<%=memberDB[0]["memberEmail"]%>"></td>
+                </tr>
+            
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="입력완료">
+                        <input type="button" value="홈으로" onclick="location.href='memberListAll'">
+                    </td>
+                </tr>
+	        </table>
+	    </form>
+	</div>
+
+    <%- include('../footer.ejs') %>
+</body>
+</html>

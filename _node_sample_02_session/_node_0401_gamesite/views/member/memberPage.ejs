@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../_0102_top.ejs') %>
+    <%- include('../_0104_nav.ejs') %>
+    <div align="center">
+		<br><br>
+		<h2>회원정보</h2>
+		<br><br>
+		
+	   
+	    <table border="1">
+	    	<tr>
+	    		<td>학번</td>
+	    		<td><%=member["memberNo"]%></td>
+	        </tr>
+	        <tr>
+	         	<td>이름</td>
+                <td><%=member["memberName"]%></td>
+	        </tr>
+	        <tr>
+	        	<td>학년</td>
+                <td><%=member["memberGrade"]%>학년</td>
+	        </tr>
+	        <tr>
+	        	<td> 선택과목</td>
+                <td><%=member["memberSubject"]%></td>
+	        </tr>
+	         <tr>
+	        	<td>취미</td>
+                <td><%=member["memberHobby"]%></td>
+	        </tr>
+			<tr>
+				<td>메모</td>
+				<td><textarea rows="10" cols="50" readonly><%=member["memberMemo"]%></textarea></td>
+			</tr>
+	         	<tr>
+	         		<td colspan="2" align="center">
+						<input type="button" value="홈으로" onclick="location.href='memberListAll'">
+					</td>
+	         	</tr>
+	         </table>
+	  </div>
+    <%- include('../_0103_footer.ejs') %>
+</body>
+</html>

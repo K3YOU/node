@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%
+        var msg = ""
+        if (op == select){
+            msg = "정답"
+        }else{
+            msg = "오답"
+        }
+        if (op == 1){
+            op = "+"
+        }else if(op == 2){
+            op = "-"
+        }else if(op == 3){
+            op = "x"
+        }
+    %>
+    
+    <%=num1%> <%=op%> <%=num2%> = <%=result %> <br><br>
+    
+    <h2><%=msg%></h2>
+
+    <a href="main">돌아가기</a>
+
+</body>
+</html>

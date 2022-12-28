@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>업다운게임</title>
+
+</head>
+
+<body>
+    <%- include('../top.ejs') %>
+    <%- include('../nav.ejs') %>
+
+	<div align="center" >
+		<br><br>
+		<h2>랭킹목록</h2>
+		<br><br>	
+		<table border="1">
+			<tr align="center">	
+				<td width="100px">번호</td>
+				<td width="100px">점수</td>
+				<td width="100px">이름</td>
+			</tr>		
+		<%			
+			for(var i=0; i<scoreDB.length; i++){
+				var score = scoreDB[i];		
+		%>
+			<tr align="center">
+				<td > <%= i + 1 %></a></td>
+				<td><%= score["scorePoint"] %></td>
+				<td ><%= score["playerName"] %></td>
+              
+			</tr>
+		<%		
+			}
+		%>
+		</table>		
+	</div>
+
+    <%- include('../footer.ejs') %>
+</body>
+</html>

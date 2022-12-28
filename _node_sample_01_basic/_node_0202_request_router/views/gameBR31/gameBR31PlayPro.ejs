@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <% 
+        
+		total = parseInt(total);
+		turn = parseInt(turn);	
+			
+		var state = "";
+		
+		if(total >= 31 && turn % 2 == 1){
+			state = "P2";
+		}
+		else if(total >= 31 && turn % 2 == 0){
+			state = "P1";
+		}
+    %> 
+    <div align="center">
+
+        <h4>현재스코어 : <%= total %></h4>
+            <% if(turn % 2 == 1) { %> 
+                <h2>p1 턴 </h2>
+            <% } else { %>
+                <h2>p2 턴 </h2>
+            <%} %>
+            
+            <% if(state == "P1") { %>
+                <h1>PLAYER 1 승리</h1>
+                <a href="gameBR31Main">처음으로 </a>
+            <% } else if(state == "P2") { %>
+                <h1>PLAYER 2 승리</h1>
+                <a href="gameBR31Main">처음으로 </a>
+            <% } else { %>
+                <a href="gameBR31Play?total=<%=total%>&turn=<%=turn+1%>">뒤로가기 </a>
+            <% } %>
+    </div>
+</body>
+</html>

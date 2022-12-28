@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT BOOK</title>
+    <link rel="shortcut icon" href="favi.ico">
+</head>
+<body>
+	<%- include('../header.ejs') %>
+	<%- include('../nav.ejs') %>
+	<br><br>
+	<div align="center">
+		<p>
+			<font size="5"><b><%= bookDB[index]["bookName"] %></b></font>
+			<br>
+			<font size="2"><%= bookDB[index]["bookInfo"] %></font>
+		</p>
+		<br>
+		<hr width="770px">
+		<br>
+
+		<form action="addCart">
+			<table>
+				<tr height="60px">
+					<td rowspan="6" width="350px">
+						<img alt="상품" src="<%= bookDB[index]["bookImage"] %>" height="350px" align="left" border="1px">
+					</td>
+					<td colspan="2" width="400px">
+						<font size="5"><b>정가 <%= bookDB[index]["bookPrice"] %>원</b></font> <br>
+					</td>
+				</tr>
+				<tr height="60px">
+					<td colspan="2" width="400px">
+					<%	
+					    var discountPrice = bookDB[index]["bookPrice"] * (100 - bookDB[index]["bookDiscount"]) / 100;
+						if(bookDB[index]["bookDiscount"] > 0) { 
+					%>
+						<font size="5" color="#196ab3">
+							<b>판매가 <%= discountPrice %>원</b>
+						</font> 
+						<br>
+						<font size="2" color="#196ab3">로그인 후 적립혜택이 적용됩니다.</font>
+					<%	} else  { %>
+						<font size="4"><b><%= bookDB[index]["bookPrice"] %>원</b></font>
+					<%	} %>
+					</td>
+				</tr>
+				<tr height="50px">
+					<td width="100px">
+						<font size="2"><b>판매 단위</b></font>
+					</td>
+					<td width="300px">
+						<font size="2">1개</font>
+					</td>
+				</tr>
+				<tr height="50px">
+					<td width="100px">
+						<font size="2"><b>배송비</b></font>
+					</td>
+					<td width="300px">
+						<font size="2">무료배송</font>
+					</td>
+				</tr>
+				<tr height="60px">
+					<td width="100px">
+						<font size="2"><b>배송일정</b></font>
+					</td>
+					<td width="300px">
+						<% if(bookDB[index]["bookStock"] > 0) {%>
+						<font size="2">지금 주문하면 다음날 오후 도착 예정<br></font>
+						<%}else{ %>
+						<font size="3" color="#196ab3"><b>재입고 이후 순차 배송예정</b><br></font>
+						<%} %>
+						<font size="1" color="#196ab3">[바로드림]인터넷으로 주문하고 매장에서 직접 수령가능</font>
+					</td>
+				</tr>
+				<tr height="60px">
+					<td width="100px">
+						<font size="2"><b>구매수량</b></font>
+					</td>
+					<td width="300px">
+					<% if(bookDB[index]["bookStock"] > 0) {%>
+						<input type="number" name="buyCount" min="1" max="100" value="1">
+					<% } else { %>
+						<font size="2">상품 준비중입니다.</font>
+					<% } %>
+					</td>
+				</tr>
+				<tr height="90px">
+					<td colspan="3" align="right">
+					<% if(bookDB[index]["bookStock"] > 0) {%>
+					    <input type="hidden" name="bookName" value="<%= bookDB[index]['bookName'] %>">
+						<input type="hidden" name="bookImage" value="<%= bookDB[index]['bookImage'] %>">
+						<input type="hidden" name="buyPrice" value="<%= discountPrice %>">
+						<input type="image" src="sendCart.jpg" width="225px">
+					<%}else{ %>
+						<img src="retryCart.jpg" width="225px">
+					<%} %>
+					</td>
+				</tr>
+			</table>
+		</form>
+
+		<!-- 상세 이미지 -->
+		<br>
+		<hr width="770px">
+		<table>
+			<tr>
+				<td align="center">
+					<img alt="상품" src="<%= bookDB[index]['bookContentImage'] %>" width="770px" align="left" border="1px">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<%- include('../footer.ejs') %>
+</body>
+</html>

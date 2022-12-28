@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button a {
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1>전체목록 확인하기</h1>
+        <button><a href="scoreAddRandomPro">랜덤으로 값 추가하기</a></button>
+        <button><a href="scoreListPass">합격학생만 출력하기 </a></button>
+        <button><a href="scoreDeleteAllPro">전체삭제 </a></button>
+        <hr>
+        <%	for(var i=0; i<scoreDB.length; i++) { %>
+                <br><br>
+                번호 : <%=(i + 1) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                점수 : <%= scoreDB[i] %>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button><a href="scoreUpdateForm?index=<%=i%>">수정하기</a></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button><a href="scoreDeletePro?index=<%=i%>">삭제하기</a></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br><br>
+        <%	} %>
+                
+        <br><br>
+    </div>
+</body>
+</html>

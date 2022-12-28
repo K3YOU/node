@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+
+            [checkbox] 
+                체크박스를 사용시 주의할것은 체크박스는 여러개 의 데이터를 보내질수도 있기때문에 반드시 배열로 출력해야한다. 
+
+    -->
+
+    당신의 취미 : 
+    <%for(var i = 0; i < hobbies.length; i++){ %>
+        <%=hobbies[i] %>
+    <%} %>
+
+    <a href="main">돌아가기</a>
+</body>
+</html>

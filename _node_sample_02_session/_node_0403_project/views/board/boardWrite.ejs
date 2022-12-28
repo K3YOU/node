@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT BOOK</title>
+    <link rel="shortcut icon" href="favi.ico">
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <%- include("../header.ejs") %>
+    <%- include("../nav.ejs") %>
+    <div align="center">
+        <br><br>
+        <font size="5" color="#3a3a3a"><b>게시글 작성</b></font>
+        <hr width="300px" color="#196ab3">
+        <br><br>
+        <form action="boardWritePro">
+            <table border="1">
+                <tr>
+                    <td>번호</td>
+                    <td>
+                        <input type="text" name="boardNo" value="<%= boardNo %>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>작성자</td>
+                    <td>
+                        <%= log %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>제목</td>
+                    <td>
+                        <input type="text" name="boardSubject">
+                    </td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td>
+                        <textarea name="boardContent" rows="10" cols="20"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="글쓰기">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <%- include("../footer.ejs") %>
+</div>
+</body>
+</html>

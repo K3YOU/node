@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div align="center">
+    <%
+        var x = Math.floor(Math.random() * 8 + 2);
+        var y = Math.floor(Math.random() * 9 + 1);
+              
+        gameCount = parseInt(gameCount);
+        scoreCount = parseInt(scoreCount);
+    %>
+
+    <h1>구구단 게임</h1>
+    <h2>5문제를 모두 맞추면 게임 종료</h2>
+
+    <h2>[<%= gameCount %>]번째 게임 : [<%= scoreCount %>]점</h2>
+
+    <form action="game99PlayPro">
+        <%= x %> * <%= y %> = <input type="text" name="z" > <br>
+        
+        <input type="hidden" name="x" value="<%= x %>">
+        <input type="hidden" name="y" value="<%= y %>">
+        <input type="hidden" name="gameCount" value="<%= gameCount %>">
+        <input type="hidden" name="scoreCount" value="<%= scoreCount %>">
+        
+        <input type="submit" value="전송">
+    </form> 
+
+</div>
+</body>
+</html>
+

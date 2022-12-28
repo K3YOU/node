@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원목록</title>
+<style>
+	a {
+		color: blueviolet;
+	}
+
+</style>
+</head>
+<body>
+    <%- include('../_0102_top.ejs') %>
+    <%- include('../_0104_nav.ejs') %>
+	
+	<div align="center">
+        <br><br>
+		<h2>회원목록</h2>
+        <br><br>
+
+		<table>
+			<tr align="center">
+				<td colspan="5" width="265px">
+					<form action="memberListSort">
+						<select name="sortStandard" style="width: 200px;">
+							<option value="sortNo">학번</option>
+							<option value="sortName">이름</option>
+							<option value="sortGrade">학년</option>
+						</select>
+						<input type="submit" value="정렬하기">
+					</form>
+				</td>
+			</tr>
+		</table>
+		<br>
+
+        <table border="1">
+			<tr align="center">	
+				<td width="50px">학번</td>
+				<td width="50px">이름</td>
+				<td width="50px">학년</td>
+                <td width="50px">수정</td>
+                <td width="50px">삭제</td>
+			</tr>		
+		<%			
+			for(var i=0; i<memberDB.length; i++){
+				var member = memberDB[i];		
+		%>
+			<tr align="center">
+				<td>
+                    <a href="memberPage?index=<%=i%>"><%= member["memberNo"] %></a>
+                </td>
+				<td><%= member["memberName"] %></td>
+				<td><%= member["memberGrade"] %></td>
+                <td>
+                    <button style="width: 100%;" onclick="location.href='memberUpdateForm?index=<%=i%>'">수정</button>
+                </td>
+                <td>
+                    <button style="width: 100%;" onclick="location.href='memberDeletePro'">삭제</button>
+                </td>
+			</tr>
+		<%		
+			}
+		%>
+		</table>		
+	</div>
+	<%- include('../_0103_footer.ejs') %>
+</body>
+</html>

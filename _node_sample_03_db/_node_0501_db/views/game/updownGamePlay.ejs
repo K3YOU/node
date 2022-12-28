@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>업다운게임</title>
+
+</head>
+
+<body>
+    <%- include('../top.ejs') %>
+    <%- include('../nav.ejs') %>
+
+	<div align="center" >
+		<br><br>
+		<h2>업다운게임</h2>
+        <pre>
+            1~100사이의 랜덤 숫자를 맞추는게임 
+            점수는 100점에서 시작하며 틀릴때마다 10점씩 감점
+            랜덤숫자를 맞추거나 0점이되면 종료.
+        </pre>
+		<br><br>	
+        <h4><%=gameCount%>번째게임</h4>
+        <h4>점수 : <%=gameScore %></h4>
+        <h4> <%=gameMsg %></h4>
+        <br><br>	
+        <form action="updownGamePlayPro">
+            <input type="number" name="me" autofocus>
+            
+            <input type="submit" value="입력완료">  
+        </form>
+
+    </div>
+
+    <%- include('../footer.ejs') %>
+</body>
+</html>

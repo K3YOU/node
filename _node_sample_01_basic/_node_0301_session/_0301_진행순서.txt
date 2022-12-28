@@ -1,0 +1,10 @@
+[1] npm install express-session
+
+[2] 
+// session 세팅
+var session = require("express-session");
+app.use(session({
+	secret : "abcdefg", // 아무내용으로 해놓으면된다. 
+	resave : false, // 매requst 마다 session 을 다시 저장하는 옵션 (true로 하면 호율이 나빠진다. )
+	saveUninitialized : false // 빈세션이 계속 저장될수있다. false 로 해놓으면된다. (true로 하면 호율이 나빠진다. )
+}));

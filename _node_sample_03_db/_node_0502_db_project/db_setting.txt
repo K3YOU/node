@@ -1,0 +1,161 @@
+-- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+-- DROP DATABASE _node_db_booshop;
+CREATE DATABASE _node_db_booshop;
+
+USE _node_db_booshop;
+
+# 회원 테이블
+CREATE TABLE member(
+	memberNo INT,
+    memberId VARCHAR(20),
+    memberPw VARCHAR(20),
+    memberName VARCHAR(20),
+    memberEmail VARCHAR(20)
+);
+
+INSERT INTO member VALUES(1, 'hello', '1234', '김수혁', 'hello@naver.com');
+INSERT INTO member VALUES(2, 'qwer', '1234', '홍길동', 'kim@daum.net');
+INSERT INTO member VALUES(3, 'asdf', '1234', '이수정', 'lee@hotmail.com');
+SELECT MAX(memberNo) FROM member;
+SELECT * FROM member;
+SELECT COUNT(*) FROM member WHERE memberId='qwer' AND memberPw='1234';
+
+# 도서 테이블
+CREATE TABLE book(
+	bookNo INT,
+    bookCategory VARCHAR(20),
+    bookSubCategory VARCHAR(20),
+    bookName VARCHAR(100),
+    bookPrice INT,
+    bookStock INT,
+    bookImage VARCHAR(20),
+    bookInfo VARCHAR(100),
+    bookContentImage VARCHAR(50),
+    bookDiscount INT,
+    bookSold INT
+);
+
+INSERT INTO book VALUES(1  , '컴퓨터공학' , '머신러닝/딥러닝', '혼자 공부하는 머신러닝+딥러닝' 						  , 26000, 10 , '1.jpg' , '박해선 저 | 한빛미디어 | 2020년 12월 21일'														 , 'contentImg01.jpg' , 10, 78024);
+INSERT INTO book VALUES(2  , '컴퓨터공학' , '머신러닝/딥러닝', 'Must Have 머신러닝·딥러닝 문제해결 전략' 				  , 38000, 9  , '2.jpg' , '신백균 저 | 골든래빗 | 2022년 04월 13일'														 , 'contentImg02.jpg' , 10, 3288);
+INSERT INTO book VALUES(3  , '컴퓨터공학' , '머신러닝/딥러닝', '파이썬 머신러닝 완벽 가이드' 							  , 40000, 3  , '3.jpg' , '권철민 저 | 위키북스 | 2022년 04월 21일'														 , 'contentImg01.jpg' , 10, 1302);
+INSERT INTO book VALUES(4  , '컴퓨터공학' , '머신러닝/딥러닝', '파이썬 머신러닝 판다스 데이터 분석' 					  , 25000, 2  , '4.jpg' , '오승환 저 | 정보문화사 | 2019년 06월 15일'														 , 'contentImg02.jpg' , 10, 9177);
+INSERT INTO book VALUES(5  , '컴퓨터공학' , 'AI'         ,  'Do it! 첫 인공지능' 								  , 13000, 1  , '5.jpg' , '이애리 저 | 이지스퍼블리싱 | 2022년 04월 01'	  													 , 'contentImg01.jpg' , 10, 831);
+INSERT INTO book VALUES(6  , '컴퓨터공학' , '일반/에세이'   , 	'비전공자를 위한 이해할 수 있는 IT 지식' 			  , 16800, 0  , '6.jpg' , '최원영 저 | 티더블유아이지 | 2020년 07월 14일'													 , 'contentImg05.jpg' , 10, 73413);
+INSERT INTO book VALUES(7  , '컴퓨터공학' , '일반/에세이'   , 	'비전공자도 이해할 수 있는 AI 지식' 				  , 19800, 7  , '7.jpg' , '박상길 저/정진호 그림 | 반니 | 2022년 03월 04일'													 , 'contentImg01.jpg' , 10, 23217);
+INSERT INTO book VALUES(8  , '프로그래밍' , 'HTML/CSS'   ,  'Do it! HTML+CSS+자바스크립트 웹 표준의 정석' 		  , 30000, 6  , '8.jpg' , '고경희 저 | 이지스퍼블리싱 | 2021년 01월 22일'													 , 'contentImg06.jpg' , 10, 53232);
+INSERT INTO book VALUES(9  , '프로그래밍' , '파이썬'       ,  '혼자 공부하는 파이썬' 								  , 18000, 1  , '9.jpg' , '윤인성 저 | 한빛미디어 | 2019년 06월 10일'														 , 'contentImg01.jpg' , 10, 80499);
+INSERT INTO book VALUES(10 , '프로그래밍' , 'HTML/CSS'   , '코딩만 따라 해도 웹페이지가 만들어지는 HTML+CSS+자바스크립트' , 24000, 3  , '10.jpg', '반병현 저 | 생능북스 | 2022년 02월 15일'		 												 , 'contentImg02.jpg' , 10, 3552);
+
+INSERT INTO book VALUES(11 , '프로그래밍' , 'Java Script',  '자바스크립트 완벽 가이드' 							  , 42000, 4  , '11.jpg', '데이비드 플래너건 저/한선용 역 | 인사이트(insight) | 2022년 03월 31일'								 , 'contentImg01.jpg' , 10, 4143);
+INSERT INTO book VALUES(12 , '프로그래밍' , 'C/C++'      ,  '리눅스 C프로그래밍 스킬북' 							  , 25000, 2  , '12.jpg', '김원표, 박승주 저 | 홍릉 | 2022년 02월 24일'							 						 , 'contentImg02.jpg' ,  0, 90);
+INSERT INTO book VALUES(13 , '프로그래밍' , '파이썬'       ,  '모두의 데이터 분석 with 파이썬' 					  , 18000, 5  , '13.jpg', '송석리, 이현아 저 | 길벗 | 2019년 04월 25일'		 											 , 'contentImg01.jpg' , 10, 23670);
+INSERT INTO book VALUES(14 , '프로그래밍' , 'C/C++'      ,  '놀랄 만큼 재미있는 C언어 기초 WONDER C' 				  , 32000, 8  , '14.jpg', '조성호 저 | 인피니티북스 | 2021년 12월 17일'		 												 , 'contentImg02.jpg' ,  0, 2208);
+INSERT INTO book VALUES(15 , '프로그래밍' , 'C/C++'      ,  '266가지 문제로 정복하는 코딩 인터뷰 in C++' 			  , 35000, 0  , '15.jpg', '아드난 아지즈, 쭝시엔 리, 아미트 프라카시 저/이창현, 김현욱 역 | 인사이트(insight) | 2021년 10월 01일'      , 'contentImg01.jpg' , 10, 1170);
+INSERT INTO book VALUES(16 , '프로그래밍' , 'C/C++'      ,  '코딩 테스트를 위한 자료 구조와 알고리즘 with C++' 		  , 32000, 7  , '16.jpg', '존 캐리, 셰리안 도시, 파야스 라잔 저/황선규 역 | 길벗 | 2020년 12월 08일'		 					     , 'contentImg02.jpg' , 10, 4632);
+INSERT INTO book VALUES(17 , '프로그래밍' , 'C#'         ,  'C#을 다루는 기술' 								  , 36000, 1 , '17.jpg', '존 스킷 저/김명신 역 | 길벗 | 2021년 05월 13일'		 											 , 'contentImg01.jpg' , 10, 2874);
+INSERT INTO book VALUES(18 , '프로그래밍' , 'C#'         ,  'C# 프로그래밍(2판)' 								  , 26000, 0   , '18.jpg', '윤인성 저 | 한빛아카데미 | 2021년 01월 05일'		 											 , 'contentImg02.jpg' ,  0, 6498);
+INSERT INTO book VALUES(19 , '프로그래밍' , 'IOS/안드로이드',  '아키텍처를 알아야 앱 개발이 보인다' 					  , 30000, 4  , '19.jpg', '옥수환 저 | 비제이퍼블릭(BJ퍼블릭) | 2020년 04월 17일'					 						 , 'contentImg01.jpg' , 10, 1524);
+INSERT INTO book VALUES(20 , 'DB/OS'   , 'Java Script',  '초보자를 위한 JavaScript 200제' 					  , 25000, 3  , '20.jpg', '고재도, 노지연 저 | 정보문화사 | 2019년 03월 10일'		 										 , 'contentImg02.jpg' , 10, 864);
+
+INSERT INTO book VALUES(21 , '프로그래밍' , '파이썬'   	  ,  '데이터 과학을 위한 기초수학 with 파이썬' 				  , 26000, 6  , '21.jpg', '이병준 저 | 한빛아카데미 | 2021년 01월 06일'								 						 , 'contentImg01.jpg' ,  5, 3273);
+INSERT INTO book VALUES(22 , '프로그래밍' , '파이썬'       ,  '컴퓨팅 사고와 소프트웨어 with 파이썬'     			  , 25000, 1  , '22.jpg', '성태응, 홍정희, 이홍래 저 | 인피니티북스 | 2022년 03월 02일'							 			 , 'contentImg02.jpg' ,  0, 1872);
+INSERT INTO book VALUES(23 , '프로그래밍' , '파이썬'       ,  '파이썬 클린 코드' 						    	  , 28000, 3  , '23.jpg', '마리아노 아나야 저/김창수 역 | 터닝포인트 | 2019년 02월 25일'		 								 , 'contentImg01.jpg' , 10, 3942);
+INSERT INTO book VALUES(24 , '프로그래밍' , 'Java Script',  '자바스크립트 프로그래밍 입문' 						  , 27000, 9  , '24.jpg', '윤인성 저 | 한빛아카데미 | 2022년 01월 03일'		 												 , 'contentImg02.jpg' ,  0, 1674);
+INSERT INTO book VALUES(25 , '컴퓨터공학' , 'AI'         ,  '쉽게 배우는 AWS AI 서비스' 				  		  , 30000, 2  , '25.jpg', '피터 엘거, 오언 셔너히 저/맹윤호, 임지순 역/곽근봉 감수 | 한빛미디어 | 2022년 04월 15일'  			     , 'contentImg01.jpg' , 10, 714);
+INSERT INTO book VALUES(26 , 'DB/OS'   , '유닉스/리눅스'  ,  '이것이 우분투 리눅스다(개정판)' 						  , 32000, 9  , '26.jpg', '우재남 저 │ 한빛미디어 │ 2020년 11월 02일'		 					  							 , 'contentImg08.jpg' , 10, 11148);
+INSERT INTO book VALUES(27 , '프로그래밍' , '파이썬'       ,  'Do it! 점프 투 파이썬' 							  , 18000, 10 , '27.jpg', '박응용 저 | 이지스퍼블리싱 | 2019년 06월 20일'		 											 , 'contentImg02.jpg' , 10, 117618);
+INSERT INTO book VALUES(28 , '컴퓨터공학' , '머신러닝/딥러닝',	 '모두의 딥러닝' 									  , 24000, 8   , '28.jpg', '조태호 저 | 길벗 | 2022년 03월 31일'		 													 , 'contentImg07.jpg' , 10, 3084);
+INSERT INTO book VALUES(29 , '프로그래밍' , 'JSP'		  ,	'자바 웹을 다루는 기술' 								  , 45000, 5  , '29.jpg', '이병승 저 | 길벗 | 2019년 01월 10일'					 										 , 'contentImg01.jpg' , 10, 3162);
+INSERT INTO book VALUES(30 , 'DB/OS'   , 'Java'    	  ,  'Java의 정석' 									  , 30000, 3  , '30.jpg', '남궁성 저 | 도우출판 | 2016년 02월 01일'		 												 , 'contentImg02.jpg' ,  0, 31371);
+
+INSERT INTO book VALUES(31 , '컴퓨터공학' , '머신러닝/딥러닝', '선형대수와 통계학으로 배우는 머신러닝 with 파이썬' 		  , 37500, 10  , '31.jpg', '장철원 저 | 비제이퍼블릭(BJ퍼블릭) | 2021년 01월 26일'								 			 , 'contentImg01.jpg' ,  8, 7542);
+INSERT INTO book VALUES(32 , 'DB/OS'   , 'IOS/안드로이드', '코틀린을 이용한 안드로이드 개발'     				      , 30000, 5  , '32.jpg', '마르친 모스칼라, 이고르 워다 저/최민석 역 | 에이콘출판사 | 2018년 05월 31일'							 , 'contentImg02.jpg' , 10, 66);
+INSERT INTO book VALUES(33 , 'DB/OS'   , 'IOS/안드로이드', '깡쌤의 안드로이드 프로그래밍 with 자바' 				  , 35000, 10  , '33.jpg', '강성윤 저 | 쌤즈 | 2022년 04월 01일'		 													 , 'contentImg01.jpg' , 10, 0);
+INSERT INTO book VALUES(34 , '컴퓨터공학' , '머신러닝/딥러닝', '코딩은 처음이라 with 딥러닝' 						  , 18000, 6  , '34.jpg', '이종환 저 | 영진닷컴 | 2022년 04월 25일'		 											     , 'contentImg02.jpg' , 10, 330);
+INSERT INTO book VALUES(35 , '프로그래밍' , 'JAVA'       , '생활코딩! 자바 프로그래밍 입문' 				  		  , 27000, 7  , '35.jpg', '이고잉 저 | 위키북스 | 2022년 02월 09일'  			                                             , 'contentImg01.jpg' ,  0, 780);
+INSERT INTO book VALUES(36 , '컴퓨터공학' , '일반/에세이'   , '1일 1로그 100일 완성 IT 지식' 						  , 20000, 8  , '36.jpg', '브라이언 W. 커니핸 저/하성창 역 | 인사이트(insight) | 2021년 12월 31일'		 					  	 , 'contentImg04.jpg' , 10, 35775);
+INSERT INTO book VALUES(37 , '컴퓨터공학' , '일반/에세이'   , 'IT 지식으로 미래를 읽는다면' 						  , 14000, 7 , '37.jpg', '윤정구 저 | 다른 | 2022년 03월 03일'		 											         , 'contentImg01.jpg' ,  0, 654);
+INSERT INTO book VALUES(38 , '컴퓨터공학' , '일반/에세이'   , '디지털 시대에 살아남는 IT 지식' 						  , 16000, 5   , '38.jpg', '박성묵 저 | 정보문화사 | 2021년 08월 30일'		 												 , 'contentImg02.jpg' ,  0, 1500);
+INSERT INTO book VALUES(39 , '프로그래밍' , '파이썬'		  , '만들면서 배우는 파이썬과 40개의 작품들' 				  , 18800, 6  , '39.jpg', '장문철 저 | 앤써북 | 2022년 02월 28일'					 										 , 'contentImg01.jpg' , 10, 14856);
+INSERT INTO book VALUES(40 , 'DB/OS'   , 'IOS/안드로이드', '웹 표준을 이용한 iOS 앱 개발 트레이닝' 				  , 16000, 0  , '40.jpg', '크리스토퍼 레이온 저 / 김지선 역 | 정보문화사 | 2012년 07월 13일'		 							 , 'contentImg02.jpg' , 10, 0);
+
+INSERT INTO book VALUES(41 , 'DB/OS'   , 'IOS/안드로이드', 'Do it! 스위프트로 아이폰 앱 만들기 입문' 		   		  , 30000, 6  , '41.jpg', '송호정 , 이범근 저 | 이지스퍼블리싱 | 2022년 02월 28일'								 			 , 'contentImg03.jpg' ,  5, 3660);
+INSERT INTO book VALUES(42 , 'DB/OS'   , '유닉스/리눅스'  , '모두의 리눅스'     				    			  , 25000, 7  , '42.jpg', '미야케 히데아키 , 오스미 유스케 저 | 이동규 역 | 길벗 | 2021년 12월 24일'							 	 , 'contentImg02.jpg' ,  7, 1464);
+INSERT INTO book VALUES(43 , '컴퓨터공학' , '머신러닝/딥러닝', '모두의 딥러닝' 									  , 24000, 8  , '43.jpg', '조태호 저 | 길벗 | 2022년 03월 31일'		 													 , 'contentImg01.jpg' , 10, 3084);
+INSERT INTO book VALUES(44 , '프로그래밍' , 'JSP'        , '모바일 웹 서비스 구현을 위한 JSP 웹 프로그래밍' 			  , 30000, 5  , '44.jpg', '김현규 , 박유현 저 | 한빛아카데미 | 2021년 08월 23일'		 										 , 'contentImg02.jpg' , 5, 372);
+INSERT INTO book VALUES(45 , '프로그래밍' , 'JAVA'       , '명품 JAVA Programming' 				  			  , 30000, 8  , '45.jpg', '황기태 , 김효수 저 | 생능출판 | 2018년 06월 01일'  			                                     , 'contentImg01.jpg' , 10, 17082);
+INSERT INTO book VALUES(46 , '프로그래밍' , 'JAVA'       , '개념있는 JAVA' 						              , 25000, 2  , '46.jpg', '시바타 보요 저 | 김성훈 역 | 영진닷컴 | 2019년 01월 10일'		 					  		         , 'contentImg02.jpg' , 10, 132);
+INSERT INTO book VALUES(47 , '컴퓨터공학' , '머시러닝/딥러닝', '이보다 더 쉬울 수 없는 자바 머신러닝 with Weka' 		  , 31000, 0 , '47.jpg', '자바라머신러닝 저 | 비제이퍼블릭 | 2021년 01월 29일'		 										 , 'contentImg01.jpg' , 10, 480);
+INSERT INTO book VALUES(48 , '프로그래밍' , '파이썬'       , '이것이 취업을 위한 코딩 테스트다 with 파이썬' 			  , 34000, 0   , '48.jpg', '나동빈 저 | 한빛미디어 | 2020년 08월 05일'		 												 , 'contentImg02.jpg' , 10, 42039);
+INSERT INTO book VALUES(49 , '프로그래밍' , 'JSP'		  , '자신감 뿜뿜! JSP 웹 프로그래밍 Hard Carry' 			  , 26000, 0  , '49.jpg', '신윤환 저 | 생능출판 | 2022년 01월 10일'					 									 , 'contentImg01.jpg' ,  0, 783);
+INSERT INTO book VALUES(50 , 'DB/OS'   , '유닉스/리눅스' , '리눅스 입문자를 위한 명령어 사전' 					      , 32000, 1  , '50.jpg', '가와구치 히로시 , 다야 후미히코 , 미사와 아키라 저 | 서수환 역 | 한빛미디어 | 2021년 07월 07일'	         , 'contentImg02.jpg' ,  0, 4362);
+
+SELECT * FROM book;
+SELECT * FROM book ORDER BY bookSold DESC LIMIT 0, 6;
+SELECT * FROM book WHERE bookNo = 41;
+SELECT * FROM book ORDER BY bookNo ASC;
+SELECT * FROM book ORDER BY bookSold DESC LIMIT 0, 20;
+SELECT * FROM book WHERE bookCategory = 'DB/OS' ORDER BY bookNo ASC;
+SELECT * FROM book WHERE bookName LIKE '%자바%';
+
+# 게시판 테이블
+CREATE TABLE board(
+	boardNo INT,
+    boardMemberId VARCHAR(20),
+    boardSubject VARCHAR(50),
+    boardContent VARCHAR(100),
+    boardReadCount INT
+);
+INSERT INTO board VALUES( 1, 'qwer',   '제목1',  '내용1', 5);
+INSERT INTO board VALUES( 2,  "asdf",  "제목2",  "내용2", 1);
+INSERT INTO board VALUES( 3,  "qwer",  "제목3",  "내용3", 2);
+INSERT INTO board VALUES( 4,  "qwer",  "제목4",  "내용4", 0);
+INSERT INTO board VALUES( 5,  "asdf",  "제목5",  "내용5", 7);
+INSERT INTO board VALUES( 6,  "qwer",  "제목6",  "내용6", 10);
+INSERT INTO board VALUES( 7,  "asdf",  "제목7",  "내용7", 6);
+INSERT INTO board VALUES( 8,  "qwer",  "제목8",  "내용7", 1);
+INSERT INTO board VALUES( 9,  "asdf",  "제목9",  "내용9", 0);
+INSERT INTO board VALUES(10,  "qwer", "제목10", "내용10", 2);
+INSERT INTO board VALUES(11, "hello", "제목11", "내용11", 1);
+SELECT * FROM board;
+SELECT COUNT(*) FROM board;
+SELECT * FROM board ORDER BY boardNo DESC LIMIT 0, 5 ;
+UPDATE board SET boardReadCount = boardReadCount + 1 WHERE boardNo = 3;
+
+# 장바구니 테이블
+CREATE TABLE cart(
+	cartNo INT,
+    cartMemberId VARCHAR(20),
+    cartBookName VARCHAR(100),
+    cartBuyCount INT,
+    cartBookImage VARCHAR(20),
+    cartBuyBookPrice INT
+);
+INSERT INTO cart VALUES(1, "qwer", "혼자 공부하는 파이썬", 1, "9.jpg", 16200);
+SELECT * FROM cart;
+DELETE FROM cart WHERE cartNo = 2;
+SELECT MAX(cartNo) FROM cart;
+SELECT SUM(cartBuyCount * cartBuyBookPrice) FROM cart WHERE cartMemberId = 'qwer';
+
+# 주문내역 테이블
+CREATE TABLE orderBook(
+	orderNo INT,
+    orderMemberId VARCHAR(20),
+    orderBookName VARCHAR(50),
+    orderBuyCount INT,
+    orderBookImage VARCHAR(20),
+    orderBuyBookPrice INT
+);
+SELECT * FROM orderBook;
+
+
+
+
+
+
+
+
+
+
+
+

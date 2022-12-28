@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 목록</title>
+<style>
+	a {
+		color: blueviolet;
+	}
+</style>
+</head>
+<body>
+    <%- include('../top.ejs') %>
+    <%- include('../nav.ejs') %>
+	<div align="center">
+		<br><br>
+		<h2>회원 목록 (체크삭제)</h2>
+		<br><br>
+		<form action="memberTestCheckDeletePro">
+			<table border="1">		
+				<tr align="center">	
+					<td width="100px">체크삭제</td>
+					<td width="100px">번호</td>
+					<td width="100px">아이디</td>
+					<td width="100px">이름</td>
+					<td width="350px">이메일</td>				
+				</tr>		
+			<%			
+				for(var i=0; i<memberDB.length; i++){
+					var member = memberDB[i];		
+			%>
+					<tr align="left">
+						<td align="center">
+							<input type="checkbox" name="checkDelete" value="<%=member["memberNo"]%>">
+						</td>
+						<td align="center"><%= member["memberNo"] %></td>
+						<td><%= member["memberId"] %></td>
+						<td><%= member["memberName"] %></td>
+						<td><%= member["memberEmail"] %></td>					
+					</tr>
+			<%	}%>
+					<tr>
+						<td colspan="5" align="right">
+							<input type="submit" value="체크삭제">
+						</td>	
+					</tr>
+			</table>		
+		</form>		
+
+		<%- include('../footer.ejs') %>
+	</div>
+</body>
+</html>

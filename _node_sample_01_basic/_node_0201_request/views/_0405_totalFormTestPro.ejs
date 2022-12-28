@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+		<table border="1">
+			<tr>
+				<td>번호</td>
+				<td>이름</td>
+				<td>과목</td>
+				<td>취미</td>
+				<td>메모</td>
+			</tr>
+			
+			<tr>
+				<td><%=num %></td>
+				<td><%=name %></td>
+				<td><%=subject %></td>
+				<td>	
+					<%for(var i = 0; i < hobbies.length; i++){ %>
+						<%= hobbies[i]%> &nbsp;
+					<%} %>
+				</td>
+				<td><%=memo %></td>
+			</tr>		
+		</table>
+
+		<a href="main">돌아가기</a>
+	</div>	
+</body>
+</html>

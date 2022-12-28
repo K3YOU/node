@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button a{
+            text-decoration: none;
+            font-size: 80px;
+            color: black;   
+        }
+        
+        .number{
+            width: 100px;
+            height: 100px;
+        }
+        
+       
+
+    </style>
+</head>
+<body>
+    <%- include('../_0102_top.ejs') %>
+    <%- include('../_0104_nav.ejs') %>
+
+    <div align="center">
+        <h1>틱택토게임</h1>
+
+        <%if (tttTurn == 1) {%>
+            <h2>p1 턴</h2>    
+        <%}else{%>
+            <h2>p2 턴</h2>    
+        <%}%>
+
+
+             
+        <%for(var i = 0; i < tttArr.length; i++){%>
+            <%if (tttArr[i] != 0 || tttGameover == true){%>
+                <button class="number"><a href="#"><%=tttArr[i]%></a></button>
+            <%}else if (tttArr[i] == 0){%>
+                <button class="number"><a href="tttGamePro?tttIndex=<%=i%>"><%=tttArr[i]%></a></button>
+            <%}%>
+
+            <%if(i % 3 == 2){%>              
+                    <br> 
+            <%}%>
+        <%}%>
+           
+            
+        
+        <br><br>
+
+        <%if(tttGameover == true && tttWin == 1) {%>
+            <h1>p1승리</h1>
+            
+            <button><a href="/">다시시작</a></button>
+        <%}%>
+
+        <%if(tttGameover == true && tttWin == 2) {%>
+            <h1>p2승리</h1>
+            
+            <button><a href="/">다시시작</a></button>
+        <%}%>
+
+        <%if(tttGameover == true && tttWin == 3) {%>
+            <h1>무승부</h1>
+            
+            <button><a href="/">다시시작</a></button>
+        <%}%>
+    </div>
+
+    <%- include('../_0103_footer.ejs') %>
+</body>
+</html>

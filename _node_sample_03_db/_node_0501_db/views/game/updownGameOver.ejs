@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>업다운게임</title>
+
+</head>
+
+<body>
+    <%- include('../top.ejs') %>
+    <%- include('../nav.ejs') %>
+
+	<div align="center" >
+		<br><br>
+		<h2>GameOver</h2>
+        <h3>정답 : <%=com %> </h3>
+		<br><br>	
+        <h4>점수 : <%=gameScore %></h4>
+        <h4> <%=gameMsg %></h4>
+        <br><br>	
+        <h3>사용자 이름을 기록하세요 </h3>
+        <form action="updownGameOverPro">
+            <input type="text" name="playerName" autofocus>
+            <input type="submit" value="입력완료">  
+        </form>
+        <br><br>
+        <button> <a href="main">돌아가기</a> </button>
+    </div>
+
+    <%- include('../footer.ejs') %>
+</body>
+</html>

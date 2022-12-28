@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button a{
+            text-decoration: none;
+            font-size: 50px;
+            color: black;
+        }
+
+        .number{
+            width: 100px;
+            height: 100px;
+        }
+        
+        .hint{
+            background-color: lightpink;
+        }
+
+        .zero{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        max 게임이란? 10~99 사이의 숫자 25개를 랜덤으로 저장한다. 
+        그후 가장 큰값을 선택하면 0이되고 전부 0이되면 종료되는 게임이다. 
+    -->
+    <div align="center">
+
+        <h1>max 게임</h1>
+             
+        <%for(var i = 0; i < gameDB.length; i++){%>
+
+            <%if(gameover == true || gameDB[i] == 0 ){%>
+                
+                <button class="number zero"><a href="#"><%=gameDB[i]%></a></button>
+
+            <%}else if(hint == true && gameDB[i] == max){%>
+
+                <button class="number hint"><a href="maxGamePro?index=<%=i%>"><%=gameDB[i]%></a></button>
+
+            <%}else{%>
+
+                <button class="number"><a href="maxGamePro?index=<%=i%>"><%=gameDB[i]%></a></button>
+
+            <%}%>
+
+            <%if(i % 5 == 4){%>              
+                    <br> 
+            <%}%>
+
+        <%}%>
+        
+        <br><br>
+       
+        <%if(gameover == true) {%>         
+
+            <button><a href="/">다시시작</a></button>
+
+        <%}else{%>    
+
+            <button><a href="hintPro">힌트</a></button> 
+
+        <%}%>
+    </div>
+
+
+</body>
+</html>

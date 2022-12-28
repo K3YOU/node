@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        [문제]
+		거스름돈 (174,900원)을 거슬러줄려고한다.
+		단, 일천원짜리는 매진 되어 500원짜리로 거슬러준다면,
+		각 단위별로 몇장씩 나눠줘야하는가?
+	[정답]
+		오만원  : 3 , 일만원  : 2 , 오천원 : 0 , 
+		일천원  : 0 , 오백원  : 9 , 일백원 : 4
+
+        var money = 174900;
+        var fiftyThous =  parseInt(money / 50000);
+        var tenThous = parseInt(money % 50000 / 10000);
+        var fiveThous = parseInt(money % 10000 / 5000);
+        var fiveHund = parseInt(money % 5000 / 500);
+        var oneHund = parseInt(money % 500 / 100);
+
+    </pre>
+
+    <%
+        var money = 174900;
+        var fiftyThous =  parseInt(money / 50000);
+        var tenThous = parseInt(money % 50000 / 10000);
+        var fiveThous = parseInt(money % 10000 / 5000);
+        var fiveHund = parseInt(money % 5000 / 500);
+        var oneHund = parseInt(money % 500 / 100);
+    %>
+    
+    <h2>오만원 = <%= fiftyThous %></h2>
+    <h2>일만원 = <%= tenThous %></h2>
+    <h2>오천원 = <%= fiveThous %></h2>
+    <h2>일천원 = <%= 0 %></h2>
+    <h2>오백원 = <%= fiveHund %></h2>
+    <h2>일백원 = <%= oneHund %></h2>
+
+
+    <a href="main">돌아가기</a>
+</body>
+</html>

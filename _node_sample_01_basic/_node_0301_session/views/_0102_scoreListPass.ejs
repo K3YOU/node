@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+        <h1>합격생(60점이상)</h1>
+        <%	for(var i=0; i<scoreDB.length; i++) { %>
+            
+			<%if(scoreDB[i] >= 60) {%>
+                <br> <br> 
+                번호 : <%=(i + 1) %>           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                점수 : <%= scoreDB[i] %>       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         
+            <%}%>
+	    <%	} %>
+        <br><br>
+        <a href="scoreListAll">리스트로 돌아가기</a>
+    </div>
+</body>
+</html>

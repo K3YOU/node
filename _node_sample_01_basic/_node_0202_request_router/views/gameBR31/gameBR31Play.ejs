@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+<div align="center">
+
+    <% 
+        total = parseInt(total)
+        turn = parseInt(turn)    
+    %> 
+    <h4>현재스코어 : <%= total %></h4>
+
+    <% if(turn % 2 == 1) { %>
+        <h2>PLAYER 1 턴</h2>
+    <% } else { %>
+        <h2>PLAYER 2 턴</h2>
+    <% } %>
+    <br><br>
+
+    <button><a href="gameBR31PlayPro?total=<%=total + 1%>&turn=<%=turn%>"><%=total + 1%></a></button>
+    <button><a href="gameBR31PlayPro?total=<%=total + 2%>&turn=<%=turn%>"><%=total + 2%></a></button>
+    <button><a href="gameBR31PlayPro?total=<%=total + 3%>&turn=<%=turn%>"><%=total + 3%></a></button>
+</div>
+</body>
+</html>

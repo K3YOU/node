@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT BOOK</title>
+    <link rel="shortcut icon" href="favi.ico">
+</head>
+<body>
+    <%- include("../header.ejs") %>
+    <%- include("../nav.ejs") %>
+    <div align="center">
+        <br><br>
+        <h2>고객센터</h2>
+        <hr width="300px" color="#196ab3">
+        <br><br>
+
+        <table>
+            <tr align="right">
+                <td width="800px">
+                    <button onclick="location.href='boardWrite'">글쓰기</button>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+
+        <% if(count == 0) { %>
+            <h2>작성된 게시글이 없습니다.</h2>
+        <% 
+           } else { 
+
+        %>
+
+        <table>
+            <tr height="50">
+                <td width="50" align="center">
+                    <font size="3" color="#196ab3">번호</font>
+                </td>
+                <td width="50" align="center">
+                    <font size="3" color="#196ab3">작성자</font>
+                </td>
+                <td width="100" align="center">
+                    <font size="3" color="#196ab3">제목</font>
+                </td>
+                <td width="50" align="center">
+                    <font size="3" color="#196ab3">조회수</font>
+                </td>
+            </tr>
+            
+            <tr height="10">
+                <td colspan="7">
+                    <hr size="2" color="gray" width="800">
+                </td>
+            </tr>
+            
+            <%
+                for(var i = 0; i <boardList.length; i++){
+                    var board = boardList[i];
+            %>
+            <tr height="50">
+                <td width="50" align="center">
+                    <font size="2"><%= board["boardNo"] %></font>
+                </td>
+                <td width="50" align="center">
+                    <font size="2"><%= board["boardMemberId"] %></font>
+                </td>
+                <td width="100" align="center">
+                    <a href="boardInfo?boardNo=<%= board['boardNo'] %>">
+                        <font size="2"><%= board['boardSubject'] %></font>
+                    </a>
+                </td>
+                <td width="50" align="center">
+                    <font size="2"><%= board['boardReadCount'] %></font>
+                </td>
+            </tr>
+            <%
+            }
+            %>
+        </table>
+        <br><br>
+
+        <% } %>
+
+        <% if(curPageBeginPagingNumber > onepagepaingNumber) { 
+                var before = Number(curPageBeginPagingNumber) - onepagepaingNumber;
+        %>
+            <a href="boardList?curPageNum=<%= before %>">[이전]</a>
+        <% } %>
+        <%
+            for(var i=curPageBeginPagingNumber; i<=curPageEndPagingNumber; i++) {
+                var nextCurPageBeginPagingNumber = Number(curPageEndPagingNumber) - onepagepaingNumber + 1;
+        %>
+                <a href="boardList?curPageNum=<%= i %>"><%= i %>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        <%
+            }
+        %>
+
+        <% if(curPageEndPagingNumber < boardPageCount) { 
+            var next = curPageEndPagingNumber + 1;
+        %>
+            <a href="boardList?curPageNum=<%= next %>">[이후]</a>
+        <% } %>
+
+        <br><br><br><br><br><br>
+
+
+    </div>
+    <%- include("../footer.ejs") %>
+</div>
+</body>
+</html>
