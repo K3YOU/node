@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--
+    [1] form 태그
+        (1) submit 버튼과 함께 쓰여 입력받은 데이터를 다음 페이지로 전달한다.
+        (2) 속성
+            1) action="내용을 처리할 페이지명"
+            
+    
+    [2] input 태그
+        (1) 내용을 입력할 수 있는 태그이다.
+        (2) 속성
+            1-1) type="text"
+                내용을 입력할 수 있다.
+            1-2) name="age"
+                변수를 생각하면 쉽다.
+                age변수에 input에 입력된 내용을 저장한다.
+            
+            2-1) type="submit"
+                버튼을 누르면 form의 action속성에 입력한 페이지로 이동한다.
+                이동할때 input 태그에 적혀있는 내용을 url 로 전달한다.
+            2-2) value="입력완료"
+                버튼의 이름을 지정한다.
+-->
+	 <h2>나이를 입력하세요</h2>
+     <form action="formTestPro">
+        나이 : <input type="text" name ="age">
+        <input type="submit" value="done">
+      </form>    
+   
+</body>
+</html>

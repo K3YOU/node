@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre>
+        [문제]
+            아래 score 시험점수에 해당하는 학점을 출력하시오.
+            아래는 점수표이다.
+            
+            [점수표]
+            100~91 이면 A학점,
+            90~81  이면 B학점,
+            80이하는 "재시험"
+                
+            단, 만점이거나, A학점과 B학점의 일의 자리가 7점이상이면 + 추가하시오.
+            A학점과 B학점의 일의 자리가 3점이하이면 - 추가하시오.	
+            
+            점수가 92점일 경우의 학점을 얼마인지 구하시오.
+        [정답]
+            A-
+
+        -----------------------------------------------------------
+
+            var score = 92;
+ 
+            var units = score % 10;
+
+            var result = "";
+            if(91 <= score && score <= 100) {
+                result = "A";
+                if(units >= 7) {
+                    result += "+";
+                }else if(units <= 3){
+                    result += "-";
+                }
+            } else if(81 <= score && score <= 90) {
+                result = "B";
+                if(units >= 7) {
+                    result += "+";
+                }else if(units <= 3){
+                    result += "-";
+                }
+            } else if(score <= 80) {
+                result = "재시험";
+            }
+    </pre>
+            <%
+
+            var score = 90
+            var units = score % 10 <!--일의자리가 7이상일 경우-->
+            var result = ""
+            if (score>=91){
+                result = "a"
+                if(units >=7){
+                    result += "+"
+                }
+                else{
+                    result += "-"
+
+                }
+            }
+            else if(81<=score && score <=90){
+                result="b"
+                if(units >=7){
+                    result += "+"
+                }
+                else{
+                    result += "-"
+
+                }
+            }
+            else if (score<=80){
+                result="재시험"
+            }
+            %>
+
+            <h2>결과adsfadfa = <%= result %></h2>
+
+            <a href="main">돌아가기</a>
+  
+</body>
+</html>

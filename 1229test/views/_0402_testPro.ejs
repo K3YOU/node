@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        [문제] a 배열의 값을 b 배열에 하나씩 저장하는데 순서를 거꾸로 저장 
+                a = [1,2,3,4,5] 
+                
+        [정답] b = [5,4,3,2,1];
+    </pre>
+    <%
+var a = [1,2,3,4,5];
+var l= a.length -1;
+var b =[];
+for (i=0;i<a.length;i++){
+    b[l] = a[i];
+    l--;
+}
+%>
+<div>afshsre</div>
+
+ <h3><%=b %></h3>
+
+    
+<a href="main">돌아가기</a>
+
+</body>
+</html>

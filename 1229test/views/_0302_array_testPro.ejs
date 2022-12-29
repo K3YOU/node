@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre>
+        [문제1] 4의 배수만 출력한다.
+        [정답1] 20 40
+        
+        [문제2] 4의 배수의 합을 출력한다.
+        [정답2] 60
+        
+        [문제3] 4의 배수의 개수를 출력한다.
+        [정답3] 2
+       
+    </pre>
+    <%= "1번정답 :"%>
+
+<%
+    var arr = [10,20,30,40,50]
+
+    var count = 0
+    var total = 0
+    for(i=0;i<arr.length;i++){
+        if(arr[i]%4 == 0){
+            total +=arr[i]
+            count += 1
+%>
+ <%= arr[i]%>
+<%    
+        }
+
+
+    }
+
+%>
+<br>
+2번정답 = total =<%=total %>
+<br>
+
+3번정답 = count =<%=count %>
+
+<br>
+  
+        <a href="main">돌아가기</a>
+
+</body>
+</html>
+
+
+
+
+
