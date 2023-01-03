@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%
+        var msg = ""
+        //정답인지 아닌지 알기
+        if (op == select){
+            msg = "정답"
+        }else{
+            msg = "오답"
+        }
+
+        //연산자에 따라서 뭐 나올지
+
+        if (op == 1){
+            op = "+"
+        }else if(op == 2){
+            op = "-"
+        }else if(op == 3){
+            op = "x"
+        }
+    %>
+    
+    <%=ran1%> <%=op%> <%=ran2%> = <%=result %> <br><br>
+    
+    <h2><%=msg%></h2>
+
+    <a href="main">돌아가기</a>
+
+</body>
+</html>

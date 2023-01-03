@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+
+         [문제]
+			1. 구구단 문제를 출제하기 위해, 숫자 2개를 랜덤저장한다.
+			2. 저장한숫자를 토대로 구구단 문제를 출력한다.
+			 예)	3 x 7 = ?
+			3. 문제에 해당하는 정답을 입력받는다.
+			4. 정답을 비교 "정답" 또는 "땡"을 출력한다.
+    -->
+
+    <!-- 먼저 랜덤 숫자를 두 개 뽑는다 -->
+    <% 
+        var num1 = Math.floor(Math.random()*8 +2)
+        var num2 = Math.floor(Math.random() * 9 + 1);
+    %> 
+
+    <h2>tiems table</h2>
+
+    <form action="quiz99Pro">
+        <%=num1%> * <%=num2%> 
+             = 
+        <!-- 구구단의 정답이 오는 칸의 변수 이름은 "결과"라고 짓는다. 
+        여기가 내가 답을 적는 칸이다. -->
+        <input type="text" name="result">
+
+        <!-- 구구단의 정답들은 여기서는 보이면 안돼므로 히든으로 처리하고 가치값은 num1로 한다 -->
+        <input type="hidden" name="n1" value="<%=num1%>">
+        <input type="hidden" name="n2" value="<%=num2%>">
+        <input type ="submit" value="done">
+    </form>
+
+
+	<a href="main">돌아가기</a>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

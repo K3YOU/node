@@ -68,10 +68,10 @@ app.get("/scoreListPass", function(req, res){
 });
 
 app.get("/scoreUpdateForm", function(req, res){  
-    var index = req.query.index
+    // var index = req.query.index
     var renderData = {
         "scoreDB" : req.session.scoreDB,
-        "index" : index
+        "index" :  req.query.index
     };
 
     res.render("_0103_scoreUpdateForm.ejs" , renderData);
@@ -88,6 +88,8 @@ app.get("/scoreUpdatePro", function(req, res){
 });
 
 app.get("/scoreDeletePro", function(req, res){  
+    // req.session.scoreDB.splice(req.query.index ,1);
+
     var index = req.query.index
     var scoreDB = req.session.scoreDB;
     scoreDB.splice(index , 1)

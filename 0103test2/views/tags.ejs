@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+            데이터를 전달하는 방식은 form 말고도 a태그로도 보낼수있다. 
+            직접 url에 내용을 적으면된다.
+   
+
+            [1] a태그의 href 속성에 다음페이지 주소를 적을때 가장뒤에 '?' 와 '변수=값' 이런형식으로 데이터를 보낼수있다. 
+            [2] 보내는 데이터가 여러개인경우는 처음에는 '?' 이고 그이후 추가되는 데이터는 '&' 를 붙이고 '변수=값' 이런형태로 전달한다. 
+    -->
+    <% 
+        var x = 10
+        var y = 20
+        var z = 30
+    %> 
+    <button>
+        <a href="tagsPro?x=<%=x%>">next1</a>
+    </button>
+    <br>
+    <br>
+
+    <button>
+        <a href="tagsPro?x=<%=x%>&y=<%=y%>&z=<%=z%>">next2</a>
+    </button>
+
+<hr>
+<hr>
+
+<button onclick="location.href='tagsPro?x?x=<%=x%>'">
+    next333
+</button>
+<br>
+<button onclick="location.href='tagsPro?x=<%=x%>&y=<%=y%>&z=<%=z%>'">
+    next2
+</button>
+
+
+<br>
+<a href="main">돌아가기</a>
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> result </h1>
+
+    <%  
+    var msg =""
+    if(num1 * num2 == result){
+        msg="correct answer"
+    }
+    else{
+        msg="uncorrect answer"
+
+    }
+    %> 
+    <!-- 히든으로 넘긴 값들이 여기서는 나타나게! -->
+    <%=num1%> * <%=num2%> = <%=result%>
+    
+    <h2><%=msg%>입니다</h2>
+	<a href="main">돌아가기</a>
+</body>
+</html>

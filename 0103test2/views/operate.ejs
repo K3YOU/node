@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*  text-decoration: none;  ==> a태그의 밑줄 을 없애준다. */
+        a {
+            text-decoration: none; 
+        }
+
+    </style>
+</head>
+<body>
+    <!--
+        [연산자게임]
+            [1]  (4~9) 사이의 랜덤숫자 두개와 그숫자 로연산한 답이 제시된다. (예시) 3 ? 4 = 12
+            [2]  ? 에들어갈 연산자를 고르면된다. 
+
+    -->
+<% 
+    var ran1 = Math.floor(Math.random()*6+4)
+    var ran2 = Math.floor(Math.random()*6+4)
+    // 연산자를 나오는 숫자에 따라 골라지게
+    var op = Math.floor(Math.random()*3+1)
+    // 결과값은 연산자에따라 결정되게
+    var result = 0
+
+    if (op == 1){
+        result = ran1 -ran2
+    }
+    else if (op ==2){
+        result= ran1 + ran2
+    }
+    else if(op == 3) {
+        result = ran1*ran2
+    }
+    
+    
+
+%> 
+<h2>
+<%=ran1%> ? <%=ran2%> = <%=result%>
+
+</h2>
+<br>
+
+  <!-- 버튼에 연산자를 넣는방식으로 -> 버튼으로 데이터 불러오는 방식으로 -->
+<button onclick="location.href='operatePro?select=1&op=<%=op%>&ran1=<%=ran1%>&ran2=<%=ran2%>&result=<%=result%>'">+</button>
+<button onclick="location.href='operatePro?select=2&op=<%=op%>&ran1=<%=ran1%>&ran2=<%=ran2%>&result=<%=result%>'">-</button>
+<button onclick="location.href='operatePro?select=3&op=<%=op%>&ran1=<%=ran1%>&ran2=<%=ran2%>&result=<%=result%>'">x</button>
+
+
+  <br>
+    <br>
+
+    <a href="main">return</a>
+</body>
+</html>
