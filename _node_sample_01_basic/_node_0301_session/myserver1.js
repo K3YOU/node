@@ -1,7 +1,7 @@
 // 서버 세팅 
 var express = require("express");
 var app = express();
-var port = 3301;
+var port = 3302;
 var server = app.listen(port, function(){
 	console.log("서버가 가동되었습니다" + port);
 });
@@ -21,6 +21,7 @@ app.use(session({
 	saveUninitialized : false // 빈세션이 계속 저장될수있다. false 로 해놓으면된다. (true로 하면 호율이 나빠진다. )
 }));
 
+
 /*
     [세션]
         [1] 리퀘스트와 달리 데이터가 항상유지된다. 
@@ -28,6 +29,7 @@ app.use(session({
         [3] npm install express-session
         [4] 사용법 ==> req.session.변수명 = 값 
 */
+
 
 // 라우터 세팅
 app.get("/", function(req, res){ 
@@ -38,15 +40,21 @@ app.get("/", function(req, res){
     res.redirect("scoreListAll"); // res.redirect() 는 라우터이동.
 });
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// 첫 페이지 불러오기 
 app.get("/scoreListAll", function(req, res){  
 
-    var renderData = {
+    var renderData = { //랜더데이터
         "scoreDB" : req.session.scoreDB,
     };
-    res.render("_0101_scoreListAll.ejs"  , renderData );
+    res.render("_0101_scoreListAll.ejs"  , renderData ); //ejs
 });
 
 
+//랜덤으로 값 추가하기
 app.get("/scoreAddRandomPro", function(req, res){  
     var scoreDB = req.session.scoreDB
     var ran = Math.floor(Math.random() * 101)
@@ -56,8 +64,9 @@ app.get("/scoreAddRandomPro", function(req, res){
     req.session.scoreDB = scoreDB
 
     // Pro 요청은 ejs 파일이 필요없기때문에 redirect 로 원래 페이지로 보낸다.
-    res.redirect("scoreListAll");
+    res.redirect("scoreListAll"); // 첫 페이지 불러오기로 다시 돌아간다
 });
+
 
 app.get("/scoreListPass", function(req, res){  
     var renderData = {
@@ -79,7 +88,7 @@ app.get("/scoreUpdateForm", function(req, res){
 
 app.get("/scoreUpdatePro", function(req, res){  
     var updateNumber = req.query.updateNumber
-    var index = req.query.index
+    var index = req.query.index_2  //index_2자리에 이름명이 들어가야함. pro에서도 index를 사용하므로 정의를 해주고 index_2에서 사용함
     var scoreDB = req.session.scoreDB;
     scoreDB[index] = updateNumber
 

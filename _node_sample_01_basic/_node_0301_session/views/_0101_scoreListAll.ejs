@@ -15,6 +15,7 @@
 <body>
     <div align="center">
         <h1>전체목록 확인하기</h1>
+        <!-- 특정짓지 않고 전체에서 추가하거나, 전체 다 삭제하는 것이므로 서버에서 다 처리한다. -->
         <button><a href="scoreAddRandomPro">랜덤으로 값 추가하기</a></button>
         <button><a href="scoreListPass">합격학생만 출력하기 </a></button>
         <button><a href="scoreDeleteAllPro">전체삭제 </a></button>
@@ -23,6 +24,7 @@
                 <br><br>
                 번호 : <%=(i + 1) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 점수 : <%= scoreDB[i] %>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- 사용자가 누굴(특정) 수정할껀지 -->
                 <button><a href="scoreUpdateForm?index=<%=i%>">수정하기</a></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button><a href="scoreDeletePro?index=<%=i%>">삭제하기</a></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <br><br>
