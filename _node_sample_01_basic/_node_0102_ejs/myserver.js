@@ -15,8 +15,8 @@ app.engine("ejs", ejs.renderFile); // ejs세팅2
 
 // 라우터 세팅
 // res.render 하나당 ejs파일을 하나씩 추가한다. 
-app.get("/main", function(req, res){ 
-    res.render("test_main.ejs"); // res.render => ejs 파일을 출력한다. 
+app.get("/main", function(req, res){  // /main : main으로 들어와서 
+    res.render("test_main.ejs"); // res.render => ejs 파일을 출력한다.  // render : ejs파일을 그린다 
 });
 
 app.get("/var01", function(req, res){ 

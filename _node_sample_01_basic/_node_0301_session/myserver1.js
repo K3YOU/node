@@ -46,7 +46,7 @@ app.get("/", function(req, res){
 
 // 첫 페이지 불러오기 
 app.get("/scoreListAll", function(req, res){  
-
+ 
     var renderData = { //랜더데이터
         "scoreDB" : req.session.scoreDB,
     };
@@ -76,6 +76,8 @@ app.get("/scoreListPass", function(req, res){
     res.render("_0102_scoreListPass.ejs" , renderData);
 });
 
+
+// '변경되기 전' but 새로운 숫자를 입력하는 창을 만들기 위한 페이지 -> /scoreupdateForm으로 들어오면 ejs를 그려라
 app.get("/scoreUpdateForm", function(req, res){  
     // var index = req.query.index
     var renderData = {
@@ -86,14 +88,15 @@ app.get("/scoreUpdateForm", function(req, res){
     res.render("_0103_scoreUpdateForm.ejs" , renderData);
 });
 
+// 변경을 여기서 하고 새로운 페이지에 변경한 숫자를 보여주는게 아니라 원래 페이지에서 변경된 숫자를 보여줄 경우
 app.get("/scoreUpdatePro", function(req, res){  
-    var updateNumber = req.query.updateNumber
-    var index = req.query.index_2  //index_2자리에 이름명이 들어가야함. pro에서도 index를 사용하므로 정의를 해주고 index_2에서 사용함
-    var scoreDB = req.session.scoreDB;
-    scoreDB[index] = updateNumber
+    var updateNumber = req.query.updateNumber // 변경된 값
+    var index = req.query.index_2  //변경된 위치(=i) //index_2자리에 이름명이 들어가야함. pro에서도 index를 사용하므로 정의를 해주고 index_2에서 사용함
+    var scoreDB = req.session.scoreDB; 
+    scoreDB[index] = updateNumber //socreDB[i] = 새로운 숫지
 
-    req.session.scoreDB = scoreDB
-    res.redirect("scoreListAll");
+    req.session.scoreDB = scoreDB // 디비 위치랑 숫자 바껴졌음
+    res.redirect("scoreListAll");  // 원래 페이지에 변경된 숫자를 보여줄 때
 });
 
 app.get("/scoreDeletePro", function(req, res){  
