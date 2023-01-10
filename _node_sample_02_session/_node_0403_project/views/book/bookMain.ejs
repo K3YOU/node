@@ -29,7 +29,9 @@
                 <tr align="center" height="250px">
         <%      } %> 
                     <td width="400px">
-                        <a href="bookInfo?bookNo=<%= book['bookNo'] %>">
+                        <!-- 이미지를 눌렀을 때 북 인포 페이지로 가야함 -->
+                        <a href="bookInfo?bookNo=<%= book['bookNo'] %>">  
+                            <!-- 상품의 재고가 있으면 그냥 표시 품절이면 투명하게 표시-->
                             <% if(book["bookStock"] > 0) { %>
                                 <img alt="상품" src="<%= book['bookImage'] %>" width="200px" height="300px" border="1px">
                             <% } else { %>
@@ -37,6 +39,7 @@
                             <% } %> 
                         </a>
                         <p><font size="3"><b><%= book["bookName"] %></b></font></p>
+                        <!--상품의 재고가 있는 경우, 할인률-->
                         <% if(book["bookStock"] > 0) { %>
                             <% 
                                 if(book["bookDiscount"] > 0) { 
@@ -54,7 +57,8 @@
                         <p><font size="2"><%= book["bookInfo"] %></font></p>
                         <br><br>
                     </td>
-        <%      if(i % 3 == 2) { %> 
+                
+        <%      if(i % 3 == 2) { %>
                 </tr>
         <%      } %>
         <% } %>

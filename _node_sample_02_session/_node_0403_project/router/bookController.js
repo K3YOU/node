@@ -16,6 +16,7 @@ function sortBookByBookSold(bookDB) {
         bookDB[i] = bookDB[maxIndex];
         bookDB[maxIndex] = temp;
     }
+
 }
 
 // 번호 순으로 오름차순 정렬하기
@@ -46,7 +47,7 @@ function getBookListByOSCategory(bookDB) {
             OSCategoryBookList.push(bookDB[i]);
         }
     }
-    return OSCategoryBookList;
+    return OSCategoryBookList; 
 }
 
 // 카테고리가 프로그래밍인 책정보 가져오기
@@ -86,6 +87,7 @@ function getBookIndex(bookDB, bookNo) {
 }
 
 // 책 검색하기
+/// bookDB에서 특정 bookname이 들어오면  searchBookList에 집어넣고 아래에 있는 searhchBookList로 돌아간다(return)
 function getSearchBookList(bookDB, bookName) {
 
     var searchBookList = [];
@@ -222,7 +224,9 @@ module.exports = function(app){
         var name = req.session.name;
 
         var bookName = req.query.bookName;
-        var searchBookList = getSearchBookList(bookDB, bookName);
+        var searchBookList = getSearchBookList(bookDB, bookName); 
+        //북디비에서 특정 북네임을 검색하면 위에 있는 'getsearchBookList'로 가서 해당 배열만 얻고 
+        // return때문에 다시 searchBookList로 돌아온다. == 특정 배열만 받게 된다.
 
         var renderData = {	
             "log" : log,

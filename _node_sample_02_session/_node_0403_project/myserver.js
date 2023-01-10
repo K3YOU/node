@@ -134,8 +134,8 @@ app.get("/", function(req, res){
 	var cartDB = getCartSample();
 	var boardDB = getBoardSample();
 
-	req.session.log = null;
-	req.session.name = null;
+	req.session.log = null; // 회원로그인유무
+	req.session.name = null; //회원이름
 	req.session.orderDB = [];
 	req.session.memberDB = memberDB;
 	req.session.bookDB = bookDB;
@@ -144,6 +144,7 @@ app.get("/", function(req, res){
 
     res.redirect("mainBook"); 
 });
+
 
 
 

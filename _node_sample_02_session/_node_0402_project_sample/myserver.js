@@ -22,7 +22,7 @@ app.use(session({							// session에는 옵션3가지를 설정해야줘야 한
 	resave : false,							// 나머지는 false로 설정한다.
 	saveUninitialized : false
 }));
-//---------------------------------------------------------------------------------------
+//--------------------------------------------------e-------------------------------------
 // 라우터 폴더 연결
 require("./router/bookController")(app);
 // require("./router/boardController")(app);
