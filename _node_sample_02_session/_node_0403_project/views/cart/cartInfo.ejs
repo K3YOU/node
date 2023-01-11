@@ -18,9 +18,10 @@
 
         <form action="orderBook">
         <%  
+            // 몇 개를 담았는지 알려주는
             var count = 0;
             for(var i=0; i<cartDB.length; i++) { 
-                
+                // 회원가입을 한 사람만
                 if(cartDB[i]["cartMemberId"] == log) {
                     count += 1;
         %>
@@ -28,9 +29,11 @@
             <table>
                 <tr height="40px">
                     <td width="50px" align="center">
+                        
                         <%= count %>
                     </td>
                     <td width="100px" align="center">
+                        
                         <img alt="상품" src="<%= cartDB[i]['cartBookImage'] %>" height="40px" border="1px">
                     </td>
                     <td width="300px">
@@ -55,7 +58,8 @@
            <%   }
              } 
             %>
-
+            
+            
             <% if(count == 0) { %>
                 <h2>장바구니가 비었습니다.</h2>
             <% } else { %>

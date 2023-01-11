@@ -1,7 +1,7 @@
 // 서버 세팅 
 var express = require("express");
 var app = express();
-var port = 3402;
+var port = 3400;
 var server = app.listen(port, function(){
 	console.log("서버가 가동되었습니다" + port);
 });
