@@ -19,7 +19,7 @@ function sortBookByBookSold(bookDB) {
 
 }
 
-// 번호 순으로 오름차순 정렬하기
+// 번호 순으로 오름차순 정렬하기 (전체보기)
 function sortBookByBookNo(bookDB) {
   
     for(var i=0; i<bookDB.length; i++) {
@@ -105,8 +105,8 @@ module.exports = function(app){
 
     // main페이지
     app.get("/mainBook", function(req, res){ 
-        var log = req.session.log;
-        var bookDB = req.session.bookDB;
+        var log = req.session.log; // 로그인을 한 경우!!! 
+        var bookDB = req.session.bookDB; 
         var name = req.session.name;
 
         sortBookByBookSold(bookDB);

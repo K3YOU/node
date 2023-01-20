@@ -1,4 +1,6 @@
-function sortBoard(boardDB) {
+function    sortBoard(boardDB) {
+
+    
     for(var i=0; i<boardDB.length; i++) {
         var maxNo = boardDB[i]["boardNo"];
         var maxIndex = i;
@@ -24,12 +26,18 @@ function getMaxBoardNo(boardDB) {
     return maxNo;
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 module.exports = function(app){
-    // main페이지
+    // 게시판 페이지
     app.get("/boardList", function(req, res){ 
         var log = req.session.log;
 
+        //로그인이 안돼었으면
         if(log == null) {
+            //맴버로그인으로
             res.redirect("memberLogin");
         } else {
 
@@ -57,6 +65,8 @@ module.exports = function(app){
     
             var onepagepaingNumber = 2;         // 한 페이지에 보여줄 페이징 번호
             var curPageBeginPagingNumber = 1;    // 현재 페이지의 페이징 시작번호
+
+
             if(curPageNum % onepagepaingNumber > 0) {
                 curPageBeginPagingNumber = parseInt(curPageNum / onepagepaingNumber) * onepagepaingNumber + 1;
             } else {

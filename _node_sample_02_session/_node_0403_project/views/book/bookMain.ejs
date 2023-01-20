@@ -1,86 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT BOOK</title>
     <!-- 파비콘(favicon) -->
-    <link rel="shortcut icon" href="favi.ico">
+    <link rel="shortcut icon" href="favi.ico"> 
 </head>
+
 <body>
     <div align="center">
         <%- include("../header.ejs") %>
-        <%- include("../nav.ejs") %>
+            <%- include("../nav.ejs") %>
 
-        <br><br>
-        <a href="bookInfo?bookNo=27">
-            <img src="banner01.jpg">
-        </a>
-        <br><br><br><br>
+                <br><br>
+                <a href="bookInfo?bookNo=27">
+                    <img src="banner01.jpg">
+                </a>
+                <br><br><br><br>
 
-        <table>
-        <% 
-            for(var i=0; i<6; i++) { 
-                var book = bookDB[i];
-    
-                if(i % 3 == 0) {
-        %>
-                <tr align="center" height="250px">
-        <%      } %> 
-                    <td width="400px">
-                        <!-- 이미지를 눌렀을 때 북 인포 페이지로 가야함 -->
-                        <a href="bookInfo?bookNo=<%= book['bookNo'] %>">  
-                            <!-- 상품의 재고가 있으면 그냥 표시 품절이면 투명하게 표시-->
-                            <% if(book["bookStock"] > 0) { %>
-                                <img alt="상품" src="<%= book['bookImage'] %>" width="200px" height="300px" border="1px">
-                            <% } else { %>
-                                <img alt="상품" src="<%= book['bookImage'] %>" width="200px" height="300px" border="1px" style="opacity:20%">
-                            <% } %> 
-                        </a>
-                        <p><font size="3"><b><%= book["bookName"] %></b></font></p>
-                        <!--상품의 재고가 있는 경우, 할인률-->
-                        <% if(book["bookStock"] > 0) { %>
-                            <% 
-                                if(book["bookDiscount"] > 0) { 
-                                    var discountPrice = book["bookPrice"] * (100 - book["bookDiscount"]) / 100;
-                            %>
-                                <p>
-                                    <font size="3" style="text-decoration: line-through;"><%= book["bookPrice"] %>원</font>
-                                    →
-                                    <font size="3" color="#196ab3"><b><%= discountPrice %>원</b></font>
-                                </p>
-                            <% } %>
-                        <% } else { %>
-                                    <font size="2" color="red"><b>품절</b></font>
+                <table>
+                    <!-- 나머지가 0일 때 tr이 시작되어서  -->
+                    <% for(var i=0; i<6; i++) { var book=bookDB[i]; if(i % 3==0) { %> 
+                        <tr align="center" height="250px">
+                            <% } %>  <!--여기서 한 번 닿아주는 이유는 tr이 시작되는 것이라서-->
+                                <td width="400px">   <!--td는 tr안에 있는 것이라서 위의 조건문 닫는 기호 }가 td안에까지 있을 필요없다.-->
+                                    
+                                    <!-- a 테그 안에 이미지를 넣어주기 -->
+                                    <!-- a 링크는 북 상세 페이지로 넘어가고 해당 북의 넘버만 받는다. -->
+                                    <a href="bookInfo?bookNo=<%= book['bookNo'] %>">  
+                                        
+                                        <!-- 북의 재고가 있을 경우 -->
+                                        <% if(book["bookStock"]> 0) { %>
+                                            <img alt="상품" src="<%= book['bookImage'] %>" width="200px" height="300px"
+                                                border="1px">
+                                        <!-- 북의 재고가 없을 경우 투명도를 20% 낮춘다 -->
+                                        <% } else { %>
+                                            <img alt="상품" src="<%= book['bookImage'] %>" width="200px" height="300px" border="1px" style="opacity:20%">
+                                        <% } %>
+                                    </a>
+
+                                    <p>
+                                        <font size="3"><b>
+                                                <%= book["bookName"] %>
+                                            </b></font>
+                                    </p>
+                                    <!-- 책의 재고가 있을 경우 -->
+                                    <% if(book["bookStock"]> 0) { %>
+                                        <!-- 할인을 할 경우 -->
+                                        <% if(book["bookDiscount"]> 0) {
+                                            var discountPrice = book["bookPrice"] * (100 - book["bookDiscount"]) / 100;
+                                            %>
+                                            <p>
+                                                <font size="3" style="text-decoration: line-through;">
+                                                    <%= book["bookPrice"] %>원
+                                                </font>
+                                                →
+                                                <font size="3" color="#196ab3"><b>
+                                                        <%= discountPrice %>원
+                                                    </b></font>
+                                            </p>
+                                            <% } %>
+
+                                            <!--책의 재고가 없을 경우--> 
+                                    <% } else { %>
+                                        <font size="2" color="red"><b>품절</b></font>
+                                    <% } %>
+                                        <p>
+                                            <font size="2">
+                                            <%= book["bookInfo"] %>
+                                            </font>
+                                        </p>
+                                        
+                                        <br><br>
+                                </td>
+                                <% if(i % 3==2) { %>
+                        </tr>
                         <% } %>
-                        <p><font size="2"><%= book["bookInfo"] %></font></p>
-                        <br><br>
-                    </td>
-                
-        <%      if(i % 3 == 2) { %>
-                </tr>
-        <%      } %>
-        <% } %>
-        </table>
+                    <% } %>
+                </table>
 
-        <br><br>
-        <table style="background-color: #fafafa; width: 1150px;">
-            <tr>
-                <td width="400px">
-                    <a href="bookInfo?bookNo=45"><img alt="mini01" src="mini01.jpg"></a>
-                </td>
-                <td width="400px">
-                    <a href="bookInfo?bookNo=28"><img alt="mini02" src="mini02.jpg"></a>
-                </td>
-                <td width="340px">
-                    <a href="bookInfo?bookNo=26"><img alt="mini03" src="mini03.jpg"></a>
-                </td>
-            </tr>
-        </table>
-        <br><br>
+                <br><br>
+                <table style="background-color: #fafafa; width: 1150px;">
+                    <tr>
+                        <td width="400px">
+                            <a href="bookInfo?bookNo=45"><img alt="mini01" src="mini01.jpg"></a>
+                        </td>
+                        <td width="400px">
+                            <a href="bookInfo?bookNo=28"><img alt="mini02" src="mini02.jpg"></a>
+                        </td>
+                        <td width="340px">
+                            <a href="bookInfo?bookNo=26"><img alt="mini03" src="mini03.jpg"></a>
+                        </td>
+                    </tr>
+                </table>
+                <br><br>
 
-        <%- include("../footer.ejs") %>
+                <%- include("../footer.ejs") %>
     </div>
 </body>
+
 </html>

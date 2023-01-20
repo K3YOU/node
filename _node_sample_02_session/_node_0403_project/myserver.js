@@ -1,7 +1,7 @@
 // 서버 세팅 
 var express = require("express");
 var app = express();
-var port = 3400;
+var port = 3401;
 var server = app.listen(port, function(){
 	console.log("서버가 가동되었습니다" + port);
 });
@@ -31,6 +31,11 @@ require("./router/cartController")(app);
 require("./router/orderController")(app);
 //---------------------------------------------------------------------------------------
 
+
+
+//DB
+
+//회원가입 디비-> 로그인 디비
 function getMemberSample() {
 	var memberDB = [
 		{"memberNo" : 1 , "memberId" : "hello" , "memberPw" : "1234", "memberName" : "김수혁", "memberEmail" : "hello@naver.com"},
@@ -41,6 +46,7 @@ function getMemberSample() {
 	return memberDB;
 }
 
+// 책 디비
 function getBookSample() {
 	var bookDB = [
 		{"bookNo" : 1  , "bookCategory" : "컴퓨터공학" , "bookSubCategory" : "머신러닝/딥러닝", "bookName" : "혼자 공부하는 머신러닝+딥러닝" 								, "bookPrice" : 26000, "bookStock" : 10 , "bookImage" : "1.jpg" , "bookInfo" : "박해선 저 | 한빛미디어 | 2020년 12월 21일"		, "bookContentImage" : "contentImg01.jpg"  , "bookDiscount" : 10, "bookSold" : 78024},
@@ -102,6 +108,7 @@ function getBookSample() {
 	return bookDB;
 }
 
+//카트 디비
 function getCartSample() {
 	var cartDB = [
 		{"cartNo" : 1, "cartMemberId" : "qwer", "cartBookName" : "혼자 공부하는 파이썬", "cartBuyCount" : 1, "cartBookImage" : "9.jpg", "cartBuyBookPrice" : 16200}
@@ -109,6 +116,7 @@ function getCartSample() {
 	return cartDB;
 }
 
+// 게시판 디비
 function getBoardSample() {
 	var boardDB = [
 		{"boardNo" :  1, "boardMemberId" : "qwer", "boardSubject" :  "제목1", "boardContent" :  "내용1", "boardReadCount" : 5},
@@ -129,6 +137,7 @@ function getBoardSample() {
 // 라우터 세팅
 app.get("/", function(req, res){ 
 
+	// 디비 함수를 하나의 변수로 선언해서 사용 간편화
 	var memberDB = getMemberSample();
 	var bookDB = getBookSample();
 	var cartDB = getCartSample();
